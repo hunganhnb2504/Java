@@ -1,0 +1,103 @@
+/* Add some styling to the page elements */
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f8f8f8;
+}
+
+#header {
+	background-color: #333;
+	padding: 20px;
+	color: #00aa00;
+	text-align: center;
+}
+
+#header h1 {
+	margin: 0;
+	font-size: 28px;
+	color: #fff;
+}
+
+#container {
+	margin: 20px;
+}
+
+#content {
+	padding: 20px;
+	background-color: #fff;
+}
+
+.add-student-button {
+	background-color: #00aa00;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table th, table td {
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: left;
+}
+
+table th {
+	background-color: #333;
+	color: #fff;
+}
+
+.update-link, .delete-link {
+	color: #00aa00;
+	text-decoration: none;
+	margin-right: 5px;
+}
+
+.delete-link {
+	color: #ff0000;
+}
+
+.update-link:hover, .delete-link:hover {
+	text-decoration: underline;
+}
+
+/* Add some styling to the page elements */
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f8f8f8;
+}
+
+#container {
+	margin: 20px;
+}
+
+#content {
+	padding: 20px;
+	background-color: #fff;
+}
+
+.page-title {
+	margin-top: 0;
+	font-size: 28px;
+	color: #00aa00;
+}
+
+p {
+	margin: 0;
+	padding: 5px 0;
+	color: #333;
+}
+
+/* Add additional styles here if needed */
+
