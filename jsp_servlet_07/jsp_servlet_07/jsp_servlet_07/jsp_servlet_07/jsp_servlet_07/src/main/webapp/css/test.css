@@ -1,0 +1,47 @@
+/* Add some styling to the page elements */
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+#container {
+    margin: 20px;
+}
+
+#content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+    margin-top: 0;
+    font-size: 28px;
+    color: #00aa00;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.row-label {
+    font-weight: 700;
+    margin-right: 10px;
+    color: #333;
+    width: 80px;
+}
+
+.row-value {
+    margin: 0;
+    color: #666;
+}
+
+/* Add additional styles here if needed */
+
