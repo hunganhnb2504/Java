@@ -78,10 +78,6 @@
             <input type="submit" value="Update">
             <a class="button" href="ProductControllerServlet">Cancel</a>
         </form>
-        <form method="POST" action="ProductControllerServlet?action=delete">
-            <input type="hidden" name="id" value="${PRODUCT.id}">
-            <input class="button" type="submit" value="Delete">
-        </form>
     </c:otherwise>
 </c:choose>
 </body>
