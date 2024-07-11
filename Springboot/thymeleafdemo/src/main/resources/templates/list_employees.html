@@ -23,8 +23,8 @@
         </thead>
         <tbody>
         <tr th:each="tempEmployee: ${employees}">
-            <td th:text="${tempEmployee.getLastname()}" />
             <td th:text="${tempEmployee.getFirstname()}" />
+            <td th:text="${tempEmployee.getLastname()}" />
             <td th:text="${tempEmployee.getEmail()}" />
         </tr>
         </tbody>
