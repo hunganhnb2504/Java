@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>User Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>User Directory</h3>
+    <hr>
+
+    <!-- Add a button to add new user -->
+    <a th:href="@{/user/showformadduser}" class="btn btn-primary btn-sm mb-3">
+        Add User
+    </a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Full Name</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Date of Birth</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="user : ${users}">
+
+            <td th:text="${user.fullName}" />
+            <td th:text="${user.password}" />
+            <td th:text="${user.email}" />
+            <td th:text="${user.phone}" />
+            <td th:text="${user.dob}" />
+            <td th:text="${user.role}" />
+
+            <td>
+                <div class="row">
+                    <div class="col-small">
+                        <!-- Update button/link -->
+                        <form action="#" th:action="@{/user/showformadduser}" method="POST">
+                            <input type="hidden" name="UserId" th:value="${user.id}" />
+                            <button type="submit" class="btn btn-info btn-sm ml-3 mr-1">Update</button>
+                        </form>
+                    </div>
+
+                    <div class="col-small">
+                        <!-- Delete button/link -->
+                        <form action="#" th:action="@{/user/delete}" method="POST">
+                            <input type="hidden" name="UserId" th:value="${user.id}" />
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="if (!(confirm('Are you sure you want to delete this user?'))) return false;">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

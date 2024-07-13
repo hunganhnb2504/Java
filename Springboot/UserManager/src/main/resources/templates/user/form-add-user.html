@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+          crossorigin="anonymous">
+
+    <title>Save User</title>
+</head>
+
+<body>
+<div class="container">
+    <h3>User Directory</h3>
+    <hr>
+    <p class="h4 mb-4">Save User</p>
+    <form action="#" th:action="@{/user/save}" th:object="${user}" method="POST">
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" th:field="*{role}" class="form-control mb-4 col-4" placeholder="Role" required />
+        <input type="date" th:field="*{dob}" class="form-control mb-4 col-4" placeholder="Birthday" required />
+        <input type="text" th:field="*{email}" class="form-control mb-4 col-4" placeholder="Email" required />
+        <input type="text" th:field="*{fullName}" class="form-control mb-4 col-4" placeholder="Full name" required />
+        <input type="text" th:field="*{password}" class="form-control mb-4 col-4" placeholder="Password" required />
+        <input type="text" th:field="*{phone}" class="form-control mb-4 col-4" placeholder="Phone" required />
+
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+    <hr>
+    <a th:href="@{/user/list}">Back to User List</a>
+</div>
+</body>
+
+</html>
