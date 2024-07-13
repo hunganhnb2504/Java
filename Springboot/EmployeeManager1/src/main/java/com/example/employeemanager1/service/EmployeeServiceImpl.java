@@ -38,11 +38,11 @@ public class EmployeeServiceImpl implements EmployeeService
     }
     @Override
     public void save(Employee theEmployee) {
-
+        employeeRepository.save(theEmployee);
     }
 
     @Override
     public void deleteById(int theId) {
-
+        employeeRepository.deleteById(theId);
     }
 }
