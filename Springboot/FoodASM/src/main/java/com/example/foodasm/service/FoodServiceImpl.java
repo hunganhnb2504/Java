@@ -29,15 +29,15 @@ public class FoodServiceImpl implements FoodService {
     }
 
     @Override
-    public Food findById(int id) {
-        Optional<Food> result = foodRepository.findById(id);
+    public Food findById(int theId) {
+        Optional<Food> result = foodRepository.findById(theId);
         Food theFood = null;
         if (result.isPresent()) {
             theFood = result.get();
 
         }
         else {
-            throw new RuntimeException("Food not find id" + id);
+            throw new RuntimeException("Food not find id" + theId);
         }
         return theFood;
     }

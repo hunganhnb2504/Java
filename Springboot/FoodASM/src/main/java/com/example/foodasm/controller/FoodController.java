@@ -35,7 +35,7 @@ public class FoodController {
     @PostMapping("/updatefood")
     public String updateUser(@RequestParam("FoodId") int theId, Model model) {
         Food theFood = foodService.findById(theId);
-        model.addAttribute("user", theFood);
+        model.addAttribute("food", theFood);
         return "food/show-add-food";
     }
 
