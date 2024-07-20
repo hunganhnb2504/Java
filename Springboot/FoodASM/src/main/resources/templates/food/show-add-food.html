@@ -20,11 +20,12 @@
     <h3>Food Directory</h3>
     <hr>
     <p class="h4 mb-4">Save Food</p>
-    <form action="#" th:action="@{/food/save}" th:object="${food}" method="POST">
+    <form action="#" th:action="@{/food/save}" th:object="${food}" method="POST" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}" />
         <input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Name" required />
         <input type="text" th:field="*{price}" class="form-control mb-4 col-4" placeholder="price" required />
         <input type="text" th:field="*{quantity}" class="form-control mb-4 col-4" placeholder="quantity" required />
+        <input type="file" name="file" class="form-control mb-4 col-4" placeholder="Image">
         <input type="text" th:field="*{description}" class="form-control mb-4 col-4" placeholder="Description" required />
         <button type="submit" class="btn btn-info col-2">Save</button>
     </form>
