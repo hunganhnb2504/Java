@@ -11,6 +11,12 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <title>User Directory</title>
+    <style>
+        .search-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,34 +26,39 @@
     <h3>User Directory</h3>
     <hr>
 
-    <!-- Add a button to add new user -->
-    <a th:href="@{/user/showformadduser}" class="btn btn-primary btn-sm mb-3">
-        Add User
-    </a>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Add a button to add new user -->
+        <a th:href="@{/user/showformadduser}" class="btn btn-primary btn-sm">
+            Add User
+        </a>
+
+        <!-- Search form -->
+        <div class="search-container">
+            <form action="#" th:action="@{/user/list}" method="get" class="form-inline">
+                <input type="text" name="name" placeholder="Search by name" class="form-control mr-sm-2"
+                       th:value="${param.name}">
+                <button type="submit" class="btn btn-secondary my-2 my-sm-0">Search</button>
+            </form>
+        </div>
+    </div>
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
-            <th>Full Name</th>
-            <th>Password</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Date of Birth</th>
-            <th>Role</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Salary</th>
             <th>Action</th>
         </tr>
         </thead>
 
         <tbody>
         <tr th:each="user : ${users}">
-
-            <td th:text="${user.fullName}" />
-            <td th:text="${user.password}" />
-            <td th:text="${user.email}" />
-            <td th:text="${user.phone}" />
-            <td th:text="${user.dob}" />
-            <td th:text="${user.role}" />
-
+            <td th:text="${user.id}" />
+            <td th:text="${user.name}" />
+            <td th:text="${user.age}" />
+            <td th:text="${user.salary}" />
             <td>
                 <div class="row">
                     <div class="col-small">
@@ -70,7 +81,6 @@
                     </div>
                 </div>
             </td>
-
         </tr>
         </tbody>
     </table>
