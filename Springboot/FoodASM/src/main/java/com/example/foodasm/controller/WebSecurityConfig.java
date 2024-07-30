@@ -36,16 +36,17 @@ public class WebSecurityConfig {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("food/list","/register/user").permitAll();
+                    registry.requestMatchers("food/list","register/user").permitAll();
                     registry.requestMatchers("/food/showaddfood").hasRole("ADMIN");
                     registry.requestMatchers("/food/showFormForUpdate").hasRole("USER");
                     registry.anyRequest().authenticated();
                 })
-                .formLogin(httpSecurityFormLoginConfigurer -> {
-                    httpSecurityFormLoginConfigurer
-                            .loginPage("/login")
-                            .permitAll();
-                })
+//                .formLogin(httpSecurityFormLoginConfigurer -> {
+//                    httpSecurityFormLoginConfigurer
+//                            .loginPage("/login")
+//                            .permitAll();
+//                })
+                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .build();
     }
 

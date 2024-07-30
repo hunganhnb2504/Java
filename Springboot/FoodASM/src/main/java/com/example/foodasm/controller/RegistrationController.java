@@ -4,7 +4,6 @@ import com.example.foodasm.dao.MyUserRepository;
 import com.example.foodasm.entities.MyUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,5 +21,4 @@ public class RegistrationController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return myUserRepository.save(user);
     }
-
 }

@@ -31,10 +31,10 @@ public class MyUserDetailService implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         }
     }
-    private String getRoles(MyUser user) {
+    private String[] getRoles(MyUser user) {
         if (user.getRole()== null) {
-            return "USER";
+            return new String[]{"USER"};
         }
-        return user.getRole().split(",")[0];
+        return user.getRole().split(",");
     }
 }

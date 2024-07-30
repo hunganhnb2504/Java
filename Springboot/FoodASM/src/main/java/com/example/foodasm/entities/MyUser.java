@@ -1,18 +1,19 @@
 package com.example.foodasm.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "user")
 public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "username")
     private  String username;
+    @Column(name = "password")
     private  String password;
+    @Column(name = "role")
     private String role;
 
     public long getId() {
