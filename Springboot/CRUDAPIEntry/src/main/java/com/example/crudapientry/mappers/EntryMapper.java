@@ -16,15 +16,4 @@ public class EntryMapper {
                 .author(entry.getAuthor())
                 .build();
     }
-
-    public Entry toEntity(EntryDTO entryDTO) {
-        return Entry.builder()
-                .id(entryDTO.getId())
-                .title(entryDTO.getTitle())
-                .content(entryDTO.getContent())
-                .rate(entryDTO.getRate())
-                .created(entryDTO.getCreated())
-                .author(entryDTO.getAuthor())
-                .build();
-    }
 }
