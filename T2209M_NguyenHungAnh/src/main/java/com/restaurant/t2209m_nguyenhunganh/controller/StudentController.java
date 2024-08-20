@@ -2,6 +2,7 @@ package com.restaurant.t2209m_nguyenhunganh.controller;
 
 import com.restaurant.t2209m_nguyenhunganh.entities.Student;
 import com.restaurant.t2209m_nguyenhunganh.entities.StudentScore;
+import com.restaurant.t2209m_nguyenhunganh.entities.Subject;
 import com.restaurant.t2209m_nguyenhunganh.repository.StudentRepository;
 import com.restaurant.t2209m_nguyenhunganh.repository.StudentScoreRepository;
 import com.restaurant.t2209m_nguyenhunganh.repository.SubjectRepository;
@@ -63,17 +64,29 @@ public class StudentController {
         studentRepository.delete(studentRepository.getReferenceById(id));
         return "redirect:/students";
     }
-
     @GetMapping("/scores/add")
     public String showAddScoreForm(Model model) {
         model.addAttribute("score", new StudentScore());
         model.addAttribute("students", studentRepository.findAll());
         model.addAttribute("subjects", subjectRepository.findAll());
-        return "students/add_score";
+        return "students/add_score"; // Tên của template HTML
     }
 
     @PostMapping("/scores/add")
-    public String addScore(@ModelAttribute StudentScore score) {
+    public String addScore(@RequestParam int studentId,
+                           @RequestParam int subjectId,
+                           @RequestParam double score1,
+                           @RequestParam double score2) {
+
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + studentId));
+        Subject subject = subjectRepository.findById(subjectId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid subject Id:" + subjectId));
+        StudentScore score = new StudentScore();
+        score.setStudent(student);
+        score.setSubject(subject);
+        score.setScore1(score1);
+        score.setScore2(score2);
         studentScoreRepository.save(score);
         return "redirect:/students";
     }
