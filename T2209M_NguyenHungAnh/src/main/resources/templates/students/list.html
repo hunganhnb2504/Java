@@ -17,7 +17,7 @@
 
     <div class="actions">
         <a href="/students/add" class="btn btn-primary">+ Student</a>
-        <a href="/scores/add" class="btn btn-primary">+ Score</a>
+        <a href="/students/scores/add" class="btn btn-primary">+ Score</a>
     </div>
 
     <table class="table table-striped">
@@ -46,11 +46,11 @@
             <td>--</td>
         </tr>
         <tr th:each="score : ${scores}">
-            <td th:text="${score.student.studentCode}">Student Code</td>
-            <td th:text="${score.student.fullName}">Full Name</td>
-            <td th:text="${score.student.address}">Address</td>
-            <td th:text="${score.subject.subjectName}">Subject Name</td>
-            <td th:text="${score.subject.credit}">Credit</td>
+            <td th:text="${score.student != null ? score.student.studentCode : 'N/A'}">Student Code</td>
+            <td th:text="${score.student != null ? score.student.fullName : 'N/A'}">Full Name</td>
+            <td th:text="${score.student != null ? score.student.address : 'N/A'}">Address</td>
+            <td th:text="${score.subject != null ? score.subject.subjectName : 'N/A'}">Subject Name</td>
+            <td th:text="${score.subject != null ? score.subject.credit : 'N/A'}">Credit</td>
             <td th:text="${score.score1}">Score 1</td>
             <td th:text="${score.score2}">Score 2</td>
             <td th:text="${score.grade}">Grade</td>

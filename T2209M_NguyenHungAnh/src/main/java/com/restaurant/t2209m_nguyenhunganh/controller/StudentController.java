@@ -1,6 +1,7 @@
 package com.restaurant.t2209m_nguyenhunganh.controller;
 
 import com.restaurant.t2209m_nguyenhunganh.entities.Student;
+import com.restaurant.t2209m_nguyenhunganh.entities.StudentScore;
 import com.restaurant.t2209m_nguyenhunganh.repository.StudentRepository;
 import com.restaurant.t2209m_nguyenhunganh.repository.StudentScoreRepository;
 import com.restaurant.t2209m_nguyenhunganh.repository.SubjectRepository;
@@ -60,6 +61,20 @@ public class StudentController {
     @GetMapping("/{id}/delete")
     public String deleteStudent(@PathVariable Integer id) {
         studentRepository.delete(studentRepository.getReferenceById(id));
+        return "redirect:/students";
+    }
+
+    @GetMapping("/scores/add")
+    public String showAddScoreForm(Model model) {
+        model.addAttribute("score", new StudentScore());
+        model.addAttribute("students", studentRepository.findAll());
+        model.addAttribute("subjects", subjectRepository.findAll());
+        return "students/add_score";
+    }
+
+    @PostMapping("/scores/add")
+    public String addScore(@ModelAttribute StudentScore score) {
+        studentScoreRepository.save(score);
         return "redirect:/students";
     }
 }

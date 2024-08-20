@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Score</title>
+    <link rel="stylesheet" href="/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Add Score</h1>
+    <form action="/students/scores/add" method="post">
+        <div class="form-group">
+            <label for="studentId">Student</label>
+            <select id="studentId" name="studentId" class="form-control">
+                <option th:each="student : ${students}"
+                        th:value="${student.studentId}"
+                        th:text="${student.fullName}">Student</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="subjectId">Subject</label>
+            <select id="subjectId" name="subjectId" class="form-control">
+                <option th:each="subject : ${subjects}"
+                        th:value="${subject.subjectId}"
+                        th:text="${subject.subjectName}">Subject</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="score1">Score 1</label>
+            <input type="number" step="0.01" id="score1" name="score1" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="score2">Score 2</label>
+            <input type="number" step="0.01" id="score2" name="score2" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Score</button>
+    </form>
+
+</div>
+</body>
+</html>
