@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Scores</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Student Scores</h1>
+    </header>
+
+    <div class="actions">
+        <a href="/scores/add" class="btn">+ Add Score</a>
+    </div>
+
+    <table class="score-table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Student Name</th>
+            <th>Subject Name</th>
+            <th>Score 1</th>
+            <th>Score 2</th>
+            <th>Grade</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="score : ${studentScores}">
+            <td th:text="${score.studentScoreId}"></td>
+            <td th:text="${score.student.fullName}"></td>
+            <td th:text="${score.subject.subjectName}"></td>
+            <td th:text="${score.score1}"></td>
+            <td th:text="${score.score2}"></td>
+            <td th:text="${score.getFormattedGrade()}"></td>
+            <td>
+                <a th:href="@{/scores/edit/{id}(id=${score.studentScoreId})}" class="edit-link">
+                    <img src="/icons/edit.png" alt="Edit">
+                </a>
+                <a th:href="@{/scores/delete/{id}(id=${score.studentScoreId})}" class="edit-link">
+                    <img src="/icons/delete.png" alt="Delete">
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

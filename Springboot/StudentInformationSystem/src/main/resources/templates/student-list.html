@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information System</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Student Information System</h1>
+        <h2>Student Information</h2>
+    </header>
+
+    <div class="actions">
+        <a href="/students/add" class="btn">+ Student</a>
+        <a href="/scores/add" class="btn">+ Score</a>
+    </div>
+
+    <table class="student-table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Student Name</th>
+<!--            <th>Full Name</th>-->
+            <th>Subject Name</th>
+            <th>Score 1</th>
+            <th>Score 2</th>
+            <th>Credit</th>
+            <th>Grade</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Thymeleaf loop to display student information and scores -->
+        <tr th:each="student : ${students}">
+            <td th:text="${student.studentId}"></td>
+            <td th:text="${student.fullName}"></td>
+                <td th:each="score : ${student.studentScores}">
+                    <div th:text="${score.subject.subjectName}"></div>
+                    <div th:text="${score.score1}"></div>
+                    <div th:text="${score.score2}"></div>
+                    <div th:text="${score.subject.credit}"></div>
+            <td>
+                <a th:href="@{/students/edit/{id}(id=${student.studentId})}" class="edit-link">
+                    <img src="/icons/edit.png" alt="Edit">
+                </a>
+                <a th:href="@{/students/delete/{id}(id=${student.studentId})}" class="edit-link">
+                    <img src="/icons/delete.png" alt="Delete">
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
