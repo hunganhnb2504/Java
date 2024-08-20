@@ -90,4 +90,45 @@ public class StudentController {
         studentScoreRepository.save(score);
         return "redirect:/students";
     }
+
+    // Hiển thị biểu mẫu thêm môn học
+    @GetMapping("/subjects/add")
+    public String showAddSubjectForm(Model model) {
+        model.addAttribute("subject", new Subject());
+        return "add_subject";
+    }
+
+    // Xử lý việc thêm môn học
+    @PostMapping("/subjects/add")
+    public String addSubject(@ModelAttribute Subject subject) {
+        subjectRepository.save(subject);
+        return "redirect:/students/subjects";
+    }
+
+    // Hiển thị danh sách môn học
+    @GetMapping("/subjects")
+    public String listSubjects(Model model) {
+        model.addAttribute("subjects", subjectRepository.findAll());
+        return "list_subjects";
+    }
+
+    // Hiển thị biểu mẫu gán môn học cho sinh viên
+    @GetMapping("/assign/subject")
+    public String showAssignSubjectForm(Model model) {
+        model.addAttribute("students", studentRepository.findAll());
+        model.addAttribute("subjects", subjectRepository.findAll());
+        return "assign_subject";
+    }
+
+    // Xử lý việc gán môn học cho sinh viên
+//    @PostMapping("/assign/subject")
+//    public String assignSubjectToStudent(@RequestParam int studentId, @RequestParam int subjectId) {
+//        Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalArgumentException("Invalid student ID"));
+//        Subject subject = subjectRepository.findById(subjectId).orElseThrow(() -> new IllegalArgumentException("Invalid subject ID"));
+//
+//        student.getSubjects().add(subject);
+//        studentRepository.save(student);
+//
+//        return "redirect:/students";
+//    }
 }
